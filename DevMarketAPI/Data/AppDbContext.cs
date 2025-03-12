@@ -7,7 +7,7 @@ namespace DevMarketAPI.Data
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
-        public DbSet<StudioCredentials> StudioCredentials { get; set; } // Example table
+        public DbSet<StudioCredentials> StudioCredentials { get; set; } 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
