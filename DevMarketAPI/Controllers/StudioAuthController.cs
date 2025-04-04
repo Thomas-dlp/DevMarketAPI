@@ -1,6 +1,5 @@
 ﻿using DevMarketAPI.Data;
 using DevMarketAPI.Models;
-using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography;
