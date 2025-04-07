@@ -51,9 +51,9 @@ namespace DevMarketAPI.Controllers
             var dev = new Dev
             {
                 Id = Guid.NewGuid(),
-                Title = devDto.Title,
+                Title = devDto.Name,
                 Description = devDto.Description,
-                ImageUrl = devDto.ImageUrl,
+                ImageUrl = devDto.LogoUrl,
                 StudioId = devDto.StudioId
             };
             _context.Devs.Add(dev);
