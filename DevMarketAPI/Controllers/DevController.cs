@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DevMarketAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/devs")]
     [ApiController]
     public class DevController : ControllerBase
     {
@@ -82,5 +82,7 @@ namespace DevMarketAPI.Controllers
         public void Delete(int id)
         {
         }
+
+      
     }
 }

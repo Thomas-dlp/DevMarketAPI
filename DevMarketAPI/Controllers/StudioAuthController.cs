@@ -10,7 +10,7 @@ using System.Text;
 
 namespace DevMarketAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/studio-auth")]
     [ApiController]
     public class StudioAuthController : ControllerBase
     {

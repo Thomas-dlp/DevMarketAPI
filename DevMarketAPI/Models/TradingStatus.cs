@@ -6,6 +6,6 @@
         public string Title { get; set; }
         public string Description { get; set; }
         public string ImageUrl { get; set; }
-        public string StudioId { get; set; }
+        public Guid StudioId { get; set; }
     }
 }

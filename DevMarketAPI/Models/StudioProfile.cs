@@ -16,6 +16,7 @@ namespace DevMarketAPI.Models
         public string? Abstract { get; set; }
         public string? Bio { get; set; }
         public string[]? settings { get; set; }
+      
 
     }
 }

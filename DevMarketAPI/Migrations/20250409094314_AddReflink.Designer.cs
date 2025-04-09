@@ -4,6 +4,7 @@ using DevMarketAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DevMarketAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250409094314_AddReflink")]
+    partial class AddReflink
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,35 +51,6 @@ namespace DevMarketAPI.Migrations
                     b.ToTable("Devs");
                 });
 
-            modelBuilder.Entity("DevMarketAPI.Models.DisplayableElementReferenceLink", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("DisplayableElementId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("DisplayableElementType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("Order")
-                        .HasColumnType("int");
-
-                    b.Property<Guid>("StudioId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("StudioId");
-
-                    b.HasIndex("StudioId", "DisplayableElementId", "DisplayableElementType")
-                        .IsUnique();
-
-                    b.ToTable("ReferenceLinks");
-                });
-
             modelBuilder.Entity("DevMarketAPI.Models.Post", b =>
                 {
                     b.Property<Guid>("Id")
@@ -101,6 +75,39 @@ namespace DevMarketAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Posts");
+                });
+
+            modelBuilder.Entity("DevMarketAPI.Models.ReferenceLink", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("DisplayableElementId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("DisplayableElementType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Order")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("StudioId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("StudioId");
+
+                    b.HasIndex("StudioId", "DisplayableElementId", "DisplayableElementType")
+                        .IsUnique();
+
+                    b.ToTable("ReferenceLinks");
                 });
 
             modelBuilder.Entity("DevMarketAPI.Models.StudioCredentials", b =>
