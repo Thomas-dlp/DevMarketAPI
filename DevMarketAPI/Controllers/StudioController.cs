@@ -222,6 +222,20 @@ namespace DevMarketAPI.Controllers
         }
 
 
+        [HttpGet("light")]
+        public async Task<ActionResult<IEnumerable<LightElementDto>>> GetLightStudios(Guid id)
+        {
+            var lightStudios = await _context.StudioProfiles.Select(studio => new LightElementDto
+            {
+                Id = studio.Id,
+                Title = studio.Name,
+            }).ToListAsync();
+
+            return Ok(lightStudios);
+
+        }
+
+
         [HttpGet("{id}/devs/light")]
         public async Task<ActionResult<IEnumerable<LightElementDto>>> GetLightDevs(Guid id)
         {

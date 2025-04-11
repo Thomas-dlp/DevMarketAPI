@@ -13,6 +13,7 @@ namespace DevMarketAPI.Data
         public DbSet<Dev> Devs { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<TradingStatus> TradingStatuses { get; set; }
+        public DbSet<Tag> Tags { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
