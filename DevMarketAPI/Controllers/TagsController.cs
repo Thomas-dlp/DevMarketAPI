@@ -26,5 +26,23 @@ namespace DevMarketAPI.Controllers
             var tags = await _context.Tags.ToListAsync();
             return Ok(tags);
         }
+
+        [HttpPost]
+        public async Task<ActionResult<Tag>> Post([FromBody] string tagDto)
+        {
+            if (tagDto == null)
+            {
+                return BadRequest("TagDto is null");
+            }
+
+            var tag = new Tag
+            {
+                Id = Guid.NewGuid(),
+                Title = tagDto,
+            };
+            _context.Tags.Add(tag);
+            await _context.SaveChangesAsync();
+            return CreatedAtAction(nameof(GetTags), new { id = tag.Id }, tag);
+        }
     }
 }
