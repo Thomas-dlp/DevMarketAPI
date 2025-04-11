@@ -34,6 +34,19 @@ namespace DevMarketAPI.Data
                 .HasConversion<string>()
                 .IsRequired();
 
+            modelBuilder.Entity<DevTag>()
+                .HasKey(dt => new { dt.DevId, dt.TagId });
+
+            modelBuilder.Entity<DevTag>()
+                .HasOne(dt => dt.Dev)
+                .WithMany(d => d.DevTags)
+                .HasForeignKey(dt => dt.DevId);
+
+            modelBuilder.Entity<DevTag>()
+                .HasOne(dt => dt.Tag)
+                .WithMany() // complete if nav to dev from tag needed
+                .HasForeignKey(dt => dt.TagId);
+
             base.OnModelCreating(modelBuilder);
         }
     }

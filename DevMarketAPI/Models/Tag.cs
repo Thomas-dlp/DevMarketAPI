@@ -5,6 +5,8 @@ namespace DevMarketAPI.Models
     {
         public Guid Id { get; set; }
         public string Title { get; set; }
-        
+
+        // public List<DevTag> DevTags { get; set; }
+
     }
 }
