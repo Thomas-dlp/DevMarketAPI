@@ -1,5 +1,6 @@
 ﻿using DevMarketAPI.Authorization.Requirements;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Routing;
 
 namespace DevMarketAPI.Authorization.Handlers
 {
@@ -20,7 +21,7 @@ namespace DevMarketAPI.Authorization.Handlers
 
             // Get studioId from route
             var routeData = _httpContextAccessor.HttpContext?.GetRouteData();
-            var studioIdFromRoute = routeData?.Values["studioId"]?.ToString();
+            var studioIdFromRoute = routeData?.Values["id"]?.ToString();
 
             if (studioIdFromRoute == null)
                 return Task.CompletedTask;

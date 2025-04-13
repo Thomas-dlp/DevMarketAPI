@@ -50,7 +50,7 @@ namespace DevMarketAPI.Controllers
                 return Unauthorized(new {message="Invalid username or password"});
             }
             var jwtSettings = _config.GetSection("Jwt");
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["Key"]));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("my-secret-key-that-i-should-store-in-a-dedicated-service"));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             var claims = new[]
