@@ -2,6 +2,7 @@
 using DevMarketAPI.Data;
 using DevMarketAPI.DTOs;
 using DevMarketAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.IO.Pipelines;
@@ -11,6 +12,7 @@ using System.Security.Cryptography.Xml;
 
 namespace DevMarketAPI.Controllers
 {
+    [Authorize(Policy = "StudioAccessPolicy")]
     [Route("api/studios")]
     [ApiController]
     public class StudioController : ControllerBase
@@ -23,6 +25,7 @@ namespace DevMarketAPI.Controllers
             _mapper = mapper;
         }
 
+        [AllowAnonymous]
         [HttpGet("{id}/page")]
         public async Task<ActionResult<StudioProfile>> GetStudioPage(Guid id)
         {

@@ -2,6 +2,9 @@
 using DevMarketAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -15,11 +18,12 @@ namespace DevMarketAPI.Controllers
     public class StudioAuthController : ControllerBase
     {
         private readonly AppDbContext _context;
+        IConfiguration _config;
 
-        public StudioAuthController(AppDbContext appDbContext)
+        public StudioAuthController(AppDbContext appDbContext, IConfiguration config)
         {
             _context = appDbContext;
-            Console.WriteLine("controller built");
+            _config = config;   
         }
 
         // GET: api/<StudioCredentialsController>
@@ -45,8 +49,29 @@ namespace DevMarketAPI.Controllers
             {
                 return Unauthorized(new {message="Invalid username or password"});
             }
-            
-            return Ok(new { message = "User logged in successfully", id = $"{foundStudio.Id}" });
+            var jwtSettings = _config.GetSection("Jwt");
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["Key"]));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+            var claims = new[]
+            {
+        new Claim(ClaimTypes.NameIdentifier, foundStudio.Id.ToString()),
+        new Claim("studioId", foundStudio.Id.ToString()),
+        new Claim("role", "studioAdmin"),
+        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+    };
+
+            var token = new JwtSecurityToken(
+                issuer: jwtSettings["Issuer"],
+                audience: jwtSettings["Audience"],
+                claims: claims,
+                expires: DateTime.UtcNow.AddHours(2),
+                signingCredentials: creds
+            );
+
+            var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
+
+            return Ok(new { message = "User logged in successfully", id = $"{foundStudio.Id}", token = tokenString });
         }
 
         [HttpPost("register")]
