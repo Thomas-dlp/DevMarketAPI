@@ -224,9 +224,9 @@ namespace DevMarketAPI.Controllers
             }
         }
 
-
+        [AllowAnonymous]
         [HttpGet("light")]
-        public async Task<ActionResult<IEnumerable<LightElementDto>>> GetLightStudios(Guid id)
+        public async Task<ActionResult<IEnumerable<LightElementDto>>> GetLightStudios()
         {
             var lightStudios = await _context.StudioProfiles.Select(studio => new LightElementDto
             {
