@@ -20,17 +20,16 @@ namespace DevMarketAPI.Controllers
 
         // GET: api/<DevController>
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Dev>>> Get()
+        public async Task<ActionResult<IEnumerable<Dev>>> Get([FromQuery] Guid? studioId)
         {
-            var devs=_context.Devs.ToList();
-            return Ok(devs);
-        }
+            var query = _context.Devs.AsQueryable();
 
-        // GET api/<DevController>/5
-        [HttpGet("studio={id}")]
-        public async Task<ActionResult<IEnumerable<Dev>>> Get(Guid id)
-        {
-            var devs = await _context.Devs.Where(dev => dev.StudioId == id).ToListAsync();
+            if (studioId.HasValue)
+            {
+                query = query.Where(dev => dev.StudioId == studioId.Value);
+            }
+
+            var devs = await query.ToListAsync();
             return Ok(devs);
         }
 
