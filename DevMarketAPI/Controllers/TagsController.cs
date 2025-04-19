@@ -1,7 +1,5 @@
-﻿using DevMarketAPI.Data;
-using DevMarketAPI.DTOs;
+﻿using Devmarket.Infrastructure.Persistence;
 using DevMarketAPI.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 

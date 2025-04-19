@@ -1,4 +1,4 @@
-﻿using DevMarketAPI.Data;
+﻿using Devmarket.Infrastructure.Persistence;
 using DevMarketAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

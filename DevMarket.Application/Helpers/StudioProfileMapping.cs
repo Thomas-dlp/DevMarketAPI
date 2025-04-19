@@ -1,9 +1,8 @@
 ﻿using AutoMapper;
 using DevMarketAPI.DTOs;
 using DevMarketAPI.Models;
-using Mapster;
 
-namespace DevMarketAPI.Helpers
+namespace DevMarket.Application.Helpers
 {
     public class StudioProfileMapping :Profile
     {

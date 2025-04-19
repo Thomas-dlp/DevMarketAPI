@@ -1,5 +1,4 @@
-﻿using Azure;
-
+﻿
 namespace DevMarketAPI.Models
 {
     public class Dev: IDisplayableElement

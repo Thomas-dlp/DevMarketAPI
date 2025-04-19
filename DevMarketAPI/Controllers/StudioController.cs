@@ -1,12 +1,10 @@
 ﻿using AutoMapper;
-using DevMarketAPI.Data;
+using Devmarket.Infrastructure.Persistence;
 using DevMarketAPI.DTOs;
 using DevMarketAPI.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.IO.Pipelines;
-using System.Security.Cryptography.Xml;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 

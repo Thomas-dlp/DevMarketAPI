@@ -1,7 +1,7 @@
 ﻿using DevMarketAPI.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace DevMarketAPI.Data
+namespace Devmarket.Infrastructure.Persistence
 {
     public class AppDbContext : DbContext
     {

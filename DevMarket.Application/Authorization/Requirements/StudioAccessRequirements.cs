@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 
-namespace DevMarketAPI.Authorization.Requirements
+namespace DevMarket.Application.Authorization.Requirements
 {
     public class StudioAccessRequirement : IAuthorizationRequirement { }
 

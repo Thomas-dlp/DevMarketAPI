@@ -1,8 +1,9 @@
-﻿using DevMarketAPI.Authorization.Requirements;
+﻿using DevMarket.Application.Authorization.Requirements;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 
-namespace DevMarketAPI.Authorization.Handlers
+namespace DevMarket.Application.Authorization.Handlers
 {
     public class StudioAccessHandler : AuthorizationHandler<StudioAccessRequirement>
     {

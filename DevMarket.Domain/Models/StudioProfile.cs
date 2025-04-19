@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace DevMarketAPI.Models
 {

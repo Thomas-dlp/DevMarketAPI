@@ -1,4 +1,4 @@
-﻿using DevMarketAPI.Data;
+﻿using Devmarket.Infrastructure.Persistence;
 using DevMarketAPI.DTOs;
 using DevMarketAPI.Models;
 using Microsoft.AspNetCore.Mvc;

@@ -1,15 +1,13 @@
 using AutoMapper;
-using DevMarketAPI.Authorization.Handlers;
-using DevMarketAPI.Authorization.Requirements;
-using DevMarketAPI.Data;
-using DevMarketAPI.Helpers;
-using DevMarketAPI.Models;
+using Devmarket.Infrastructure.Persistence;
+using DevMarket.Application.Authorization.Handlers;
+using DevMarket.Application.Authorization.Requirements;
+using DevMarket.Application.Helpers;
 using DevMarketAPI.Routing;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
